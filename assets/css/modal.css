@@ -1,0 +1,82 @@
+/* MODAL */
+#pokemon-modal {
+    border: none;
+    border-radius: 1rem;
+    background: transparent;
+    width: 90%;
+    max-width: 340px;
+    padding: 0;
+}
+#pokemon-modal::backdrop { background: var(--color-background); }
+
+/* MODAL CARD */
+#pokemon-modal .pokemon-card { position: relative; padding-top: 2rem; }
+
+/* MODAL CARD NUMBER */
+#pokemon-modal .pokemon-card .number {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: .9rem;
+    opacity: .6;
+    color: var(--color-border);
+}
+#pokemon-modal .pokemon-card .number:hover { filter: contrast(1.9); }
+
+/* MODAL CONTROLS */
+#pokemon-modal .sound-toggle,
+#pokemon-modal .modal-close {
+    position: absolute;
+    top: .5rem;
+    background: none;
+    border: none;
+    color: var(--color-ball-surface);
+    cursor: pointer;
+    opacity: .7;
+}
+#pokemon-modal .sound-toggle { left: 50%; transform: translateX(-50%); }
+#pokemon-modal .modal-close { left: .75rem; font-size: 1.2rem; }
+#pokemon-modal .sound-toggle:hover,
+#pokemon-modal .modal-close:hover { opacity: 1; }
+
+/* MODAL CARD DETAIL */
+#pokemon-modal .pokemon-card .detail { padding-top: 2rem; }
+
+/* MODAL SPRITE */
+#pokemon-modal .pokemon-card .detail img {
+    max-height: 140px;
+    width: 140px;
+    bottom: 4rem;
+    position: relative;
+    z-index: 10;
+    filter: drop-shadow(0 10px 15px var(--color-background));
+    transition: transform .2s ease, filter .2s ease;
+}
+#pokemon-modal .pokemon-card .detail img:hover { transform: scale(1.1); }
+
+/* MODAL CARD NAME */
+#pokemon-modal .pokemon-card .name {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    padding-top: .5rem;
+    display: block;
+}
+
+/* MODAL TYPE LIST */
+#pokemon-modal .pokemon-card .types {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .2rem;
+    margin-top: .2rem;
+    list-style: none;
+    margin-bottom: 6.5rem;
+}
+
+/* MODAL TYPE BADGE */
+#pokemon-modal .pokemon-card .types .type {
+    width: fit-content;
+    min-width: 60px;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}

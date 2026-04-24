@@ -1,24 +1,93 @@
-* {
-    font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
-}
+/* GLOBAL RESET */
+* { box-sizing: border-box; }
 
+/* BODY */
 body {
-    background-color: #f6f8fc;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-ball-surface);
+    overflow-x: clip;
 }
 
+/* SKIP LINK */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-ball-stroke);
+    color: var(--color-ball-surface);
+    padding: 8px;
+    z-index: 10000;
+    transition: top .2s;
+}
+.skip-link:focus { top: 0; }
+
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem clamp(.75rem, 4vw, 1.5rem);
+    background-color: var(--color-ball-surface);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 0 var(--color-border);
+    min-width: 200px;
+}
+
+/* HEADER TITLE */
+header h1 {
+    cursor: pointer;
+    transition: color .2s ease;
+    user-select: none;
+    color: var(--color-ball-standard-top);
+    margin: 0;
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex-shrink: 1;
+}
+header h1:hover { color: var(--color-ball-stroke); }
+
+/* MAIN CONTENT */
 .content {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-width: 200px;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: 1rem;
-    background-color: #fff;
+    background-color: var(--color-content);
 }
 
-@media screen and (min-width: 992px) {
-    .content {
-        max-width: 992px;
-        height: auto;
-        margin: 1rem auto;
-        border-radius: 1rem;
-    }
+/* FOOTER */
+.attribution {
+    width: 100%;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: .875rem;
+    color: var(--color-ball-stroke);
+}
+.attribution a {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-ball-standard-top);
+}
+.attribution a:hover {
+    filter: contrast(1.2);
+    color: var(--color-ball-stroke);
+}
+.attribution a:focus-visible {
+    outline: 2px solid var(--color-ball-standard-top);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* RESPONSIVE LAYOUT */
+@media screen and (min-width: 920px) {
+    .content { margin: 1rem auto; border-radius: 1rem; }
+}
+@media screen and (min-width: 1200px) {
+    .content { max-width: 1600px; }
 }

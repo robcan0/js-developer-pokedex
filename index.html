@@ -1,46 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
+    <meta name="description" content="Interactive Pokédex featuring the original 151 Pokémon">
+    <link rel="icon" href="data:,">
+    <title>Pokédex</title>
 
-    <!-- Normalize CSS -->
+    <!-- EXTERNAL STYLESHEETS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        integrity="sha512-z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Font Roboto -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
 
-    <!-- Nosso CSS -->
-    <link rel="stylesheet" href="/assets/css/global.css">
-    <link rel="stylesheet" href="/assets/css/pokedex.css">
+    <!-- LOCAL STYLESHEETS -->
+    <link rel="stylesheet" href="./assets/css/colors.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/pokedex.css">
+    <link rel="stylesheet" href="./assets/css/modal.css">
+    <link rel="stylesheet" href="./assets/css/search.css">
+    <link rel="stylesheet" href="./assets/css/dark-mode.css">
+
+    <!-- SCRIPTS -->
+    <script src="./assets/js/pokemonModel.js" defer></script>
+    <script src="./assets/js/pokeApi.js" defer></script>
+    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/modal.js" defer></script>
+    <script src="./assets/js/search.js" defer></script>
+    <script src="./assets/js/darkMode.js" defer></script>
 </head>
 
 <body>
-    <section class="content">
-        <h1>Pokedex</h1>
+    <!-- SKIP LINK -->
+    <a href="#pokemon-list" class="skip-link">Skip to content</a>
 
-        <ol id="pokemonList" class="pokemons">
-            <!-- ..... Pokemons here ..... -->
-        </ol>
+    <!-- HEADER -->
+    <header>
+        <h1>Pokédex</h1>
 
+        <!-- SEARCH BAR -->
+        <section class="search-container" aria-label="Search">
+            <input type="text" id="pokemon-search-input" placeholder="Search by name, ID or type...">
+            <p id="no-results-message" hidden aria-live="polite" aria-atomic="true">Who’s that Pokémon?</p>
+        </section>
+
+        <!-- THEME TOGGLE -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <span class="pokeball">
+                <span class="pokeball-top"></span>
+                <span class="pokeball-center"></span>
+                <span class="pokeball-bottom"></span>
+            </span>
+        </button>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <!-- POKEMON LIST -->
+        <ul id="pokemon-list" class="pokemon-grid" aria-label="Pokémon list" tabindex="-1"></ul>
+
+        <!-- PAGINATION -->
         <div class="pagination">
-            <button id="loadMoreButton" type="button">
-                Load More
-            </button>
+            <button id="load-more-button" type="button">Load More</button>
         </div>
-    </section>
+    </main>
 
-    <!-- Nosso JS -->
-    <script src="/assets/js/pokemon-model.js"></script>
-    <script src="/assets/js/poke-api.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <!-- FOOTER -->
+    <footer class="attribution">
+        <p>Data provided by <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokéAPI</a></p>
+    </footer>
+
+    <!-- MODAL -->
+    <dialog id="pokemon-modal" aria-label="Pokémon details">
+
+        <!-- MODAL CARD -->
+        <article class="pokemon-card">
+
+            <!-- MODAL CONTROLS -->
+            <button type="button" class="sound-toggle" aria-label="Disable sound"><i
+                    class="fa-solid fa-volume-high"></i></button>
+            <button type="button" class="modal-close" aria-label="Close modal"><i
+                    class="fa-solid fa-xmark"></i></button>
+
+            <!-- MODAL CARD CONTENT -->
+            <span class="number"></span>
+            <span class="name" id="modal-pokemon-name"></span>
+            <div class="detail">
+                <ul class="types"></ul>
+                <img class="modal-image" src="" alt="">
+            </div>
+        </article>
+    </dialog>
 </body>
 
 </html>

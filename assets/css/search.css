@@ -1,0 +1,52 @@
+/* SEARCH CONTAINER */
+.search-container {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 1rem;
+}
+
+/* SEARCH INPUT */
+#pokemon-search-input {
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    padding: .8rem 1.2rem;
+    border: 2px solid var(--color-border);
+    border-radius: 2rem;
+    background: var(--color-ball-surface);
+    color: var(--color-ball-stroke);
+    transition: border-color .2s;
+}
+
+#pokemon-search-input:focus {
+    outline: none;
+    font-weight: 500;
+    border-color: var(--color-ball-standard-top);
+}
+
+#pokemon-search-input:hover {
+    border-color: var(--color-background-secondary);
+}
+
+/* NO RESULTS MESSAGE */
+#no-results-message {
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-ball-standard-top);
+    font-weight: 700;
+}
+
+#no-results-message:hover {
+    filter: brightness(1.4);
+    color: var(--color-ball-stroke);
+}
+
+/* SEARCH HIGHLIGHT */
+.pokemon-card .name mark {
+    background: transparent;
+    color: var(--color-ball-stroke);
+    font-weight: 700;
+    filter: brightness(1.5);
+}
